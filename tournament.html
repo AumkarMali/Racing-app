@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="tournament.style.css">
+    <style>
+        .pr {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #f4511e;
+            border: none;
+            color: #000000;
+            font-size: 13.5px;
+            padding: 20px;
+            width: 100px;
+            height: 20px;
+            transition: all 0.7s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            top: 42%;
+            left: 9%;
+            right: 30%;
+            margin: auto;
+        }
+        
+        .pr span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        
+        .pr span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        
+        .pr:hover span {
+            padding-right: 25px;
+        }
+        
+        .pr:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        
+        .kph {
+            background-color: #04eb36;
+            border: none;
+            color: black;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 9px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            position: absolute;
+            top: 45%;
+            bottom: 51%;
+            left: 44%;
+            right: 0%;
+            margin: auto;
+        }
+        
+        .mph {
+            background-color: #d30303;
+            border: none;
+            color: black;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 9px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            position: absolute;
+            top: 45%;
+            bottom: 51%;
+            left: 46.7%;
+            right: 0%;
+            margin: auto;
+        }
+    </style>
+
+    <script>
+        var numbers = [];
+        var pr = [];
+        var car_pr = [];
+        var count = 1;
+        var track_length = 0;
+        var kph_1 = false;
+        var mph_1 = false;
+
+
+        function disappear() {
+            var count2 = 5;
+            var counter = setInterval(timer, 1000);
+
+            function timer() {
+                count2 = count2 - 1;
+                if (count2 == 0) {
+                    document.getElementById("demo").innerHTML = "";
+                }
+            }
+        }
+
+        function get_value() {
+            var names = document.getElementById("name").value;
+            var track_time_NaN = document.getElementById("time").value;
+            document.getElementById("name").value = "";
+            document.getElementById("time").value = "";
+            var track_time = track_time_NaN * 60;
+            var ave_speed = (track_length / track_time) * 3.6;
+            var ave_rpm = ave_speed / 0.0398;
+            car_pr.push([names + ": lap time(sec) = ", track_time, " average speed = " + ave_speed + ", average RPM = " + ave_rpm]);
+            numbers.push("(" + count + ")");
+            console.log("number of cars: " + count);
+            count++;
+
+            if (ave_speed == 0) {
+                document.getElementById("demo").innerHTML = "Track is not valid";
+                disappear();
+                car_pr.length = 0;
+                numbers.length = 0;
+            };
+
+            if (track_time_NaN == 0) {
+                document.getElementById("demo").innerHTML = "Lap time is not valid";
+                disappear();
+                car_pr.length = 0;
+                numbers.length = 0;
+            };
+
+            if (names == 0) {
+                document.getElementById("demo").innerHTML = "Car name is not valid";
+                disappear();
+                car_pr.length = 0;
+                numbers.length = 0;
+            };
+        };
+
+
+        function Form_submit() {
+
+            if (document.getElementById("track").value == "suzuka") {
+                track_length = 5807;
+            };
+
+            if (document.getElementById("track").value == "mount") {
+                track_length = 6213;
+            };
+
+            if (document.getElementById("track").value == "spa") {
+                track_length = 7000;
+            };
+
+            if (document.getElementById("track").value == "brands") {
+                track_length = 1929;
+            };
+
+            if (document.getElementById("track").value == "500") {
+                track_length = 4023;
+            };
+
+            if (document.getElementById("track").value == "daytona") {
+                track_length = 4000;
+            };
+
+            if (document.getElementById("track").value == "le mans") {
+                track_length = 13620;
+            };
+
+            if (document.getElementById("track").value == "dubai") {
+                track_length = 5390;
+            };
+
+            if (document.getElementById("track").value == "mazda") {
+                track_length = 3602;
+            };
+
+            if (document.getElementById("track").value == "redbull") {
+                track_length = 5942;
+            };
+
+            if (document.getElementById("track").value == "silverstone") {
+                track_length = 5900;
+            };
+
+            if (document.getElementById("track").value == "hock") {
+                track_length = 4574;
+            };
+
+            if (document.getElementById("track").value == "america") {
+                track_length = 5514;
+            };
+
+            if (document.getElementById("track").value == "monza") {
+                track_length = 5793;
+            };
+
+            if (document.getElementById("track").value == "catalunya") {
+                track_length = 4650;
+            };
+
+            if (document.getElementById("track").value == "yas") {
+                track_length = 5554;
+            };
+
+            if (document.getElementById("track").value == "mel") {
+                track_length = 2700;
+            };
+
+            if (document.getElementById("track").value == "monaco") {
+                track_length = 3340;
+            };
+        };
+
+        function sortcar(a, b) {
+            if (a[1] === b[1]) { //coloums are represented by the number in the [ ]
+                return 0;
+            } else {
+                return (a[1] < b[1]) ? -1 : 1;
+            }
+
+        }
+
+        function sortcar2(a, b) {
+            if (a[1] === b[1]) { //coloums are represented by the number in the [ ]
+                return 0;
+            } else {
+                return (a[1] > b[1]) ? -1 : 1;
+            }
+
+        }
+
+        function show() {
+            console.log("Car name, Time(seconds), Average speed");
+            car_pr.sort(sortcar);
+            console.log(car_pr);
+            console.log(pr);
+            var x = document.getElementById("demo2");
+            x.innerHTML = car_pr.join('<br> <br>');
+            var y = document.getElementById("num");
+            y.innerHTML = numbers.join('<br> <br>');
+        };
+
+
+        function enter_bar(event) {
+            var x = event.which || event.keyCode;
+
+            if (x == 13) {
+                get_value();
+            };
+        }
+
+        function get_pr() {
+
+            if (kph_1 == true) {
+                var car_name = prompt("What is your car name?")
+                var get_speed = prompt("What is your cars top speed (in K/ph)?");
+                var get_acc = prompt("What is your cars acceleration?");
+                var get_brake = prompt("What is your cars braking distance (in meters)?");
+                var get_grip = prompt("What is your cars max grip?");
+                var total_pr = (get_speed * get_grip / (get_brake * get_acc)) * 11.01;
+            };
+
+            if (mph_1 == true) {
+                var car_name = prompt("What is your car name?")
+                var get_speed = prompt("What is your cars top speed (in M/ph)?");
+                var get_acc = prompt("What is your cars acceleration?");
+                var get_brake = prompt("What is your cars braking distance (in feet)?");
+                var get_grip = prompt("What is your cars max grip?");
+                var total_pr = ((get_speed * 1.6) * get_grip / ((get_brake / 3.28) * get_acc)) * 11.01;
+            };
+
+
+            pr.push([car_name, total_pr]);
+            pr.sort(sortcar2);
+        };
+
+
+        function kph() {
+            document.getElementById("mph").style.background = '#d30303';
+            document.getElementById("kph").style.background = '#04eb36';
+            kph_1 = true;
+            mph_1 = false;
+            return kph_1;
+            return mph_1;
+        };
+
+
+        function mph() {
+            document.getElementById("mph").style.background = '#04eb36';
+            document.getElementById("kph").style.background = '#d30303';
+            mph_1 = true;
+            kph_1 = false;
+            return mph_1;
+            return kph_1;
+        };
+    </script>
+</head>
+
+<body style="background-color: rgb(224, 224, 224);">
+
+    <div style="background-color: rgb(241, 174, 98);height: 320px;width: 500px;margin: auto;">
+
+        <button type="button" class="center button button2" onclick="get_value()">click to add a car</button>
+        <button type="button" class="center2 button3 button2" onclick="show()">click to display data</button>
+        <button type="button" class="pr" onclick="get_pr()"><span>car pr</span></button>
+        <button type="button" id="kph" class="kph" onclick="kph()">Met</button>
+        <button type="button" id="mph" class="mph" onclick="mph()">Imp</button>
+
+        <br>
+        <br>
+
+        <form>
+            <select name="tracks" class="form" id="track">
+                <option>Pick a track</option>
+                <option value="suzuka">Suzuka Circuit</option>          
+                <option value="mount">Mount Panorama</option> 
+                <option value="spa">Spa-francorchamps</option>
+                <option value="brands">Brands hatch</option>
+                <option value="500">Indianapolis</option>
+                <option value="daytona">Daytona Internationa Speedway</option> 
+                <option value="le mans">Circuit de 24 heures</option>
+                <option value="dubai">Dubai Autodromo</option>
+                <option value="mazda">Mazda Raceway Laguna Seca</option> 
+                <option value="redbull">Red Bull Ring</option>       
+                <option value="silverstone">Silverstone</option>
+                <option value="hock">Hockenheimring</option> 
+                <option value="america">Circuit of The Americas</option> 
+                <option value="Monza">Autodromo Nazionale Monza</option>
+                <option value="catalunya">Circuit de Catalunya</option>
+                <option value="yas">Yas Marina Circuit</option> 
+                <option value="mel">Melbourne</option> 
+                <option value="Monaco">Circuit de Monaco</option>          
+            </select>
+
+            <br>
+
+            <input type="button" class="submit submit5" onclick="Form_submit()" value="Submit">
+        </form>
+
+        <h3 id="demo" class="h3"></h3>
+        <h4 id="demo2" class="h2"></h4>
+        <h4 id="num" class="count"></h4>
+
+        <input type="text" id="name" placeholder="Enter car name" class="text1" value="" onkeypress="enter_bar(event)">
+        <input type="text" id="time" placeholder="Enter lap time" onkeypress="enter_bar(event)" style=" width: 15%;padding: 12px 20px;margin: 8px 0;display: inline-block;border: 1px solid rgb(78, 11, 122);border-radius: 4px;box-sizing: border-box;position: absolute;top: 36%;bottom: 80%;left: 0%;right: 15%;margin: auto;"
+            value="">
+
+    </div>
+
+    <marquee class="marquee" scrollamount="30" style="height: 50px;overflow: hidden;position: relative;color: rgb(0, 0, 0);font-size: 65px;position: absolute;top: 90%;bottom: 0%;left: 0%;right: 0%;margin: auto;" attribute_name="attribute_value" ....more attributes>
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    </marquee>
+
+</body>
+
+</html>

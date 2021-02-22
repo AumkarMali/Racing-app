@@ -1,0 +1,144 @@
+.center {
+    position: absolute;
+    top: 10%;
+    bottom: 80%;
+    left: 35%;
+    right: 0%;
+    margin: auto;
+}
+
+.center2 {
+    position: absolute;
+    top: 10%;
+    bottom: 80%;
+    left: 50%;
+    right: 0%;
+    margin: auto;
+}
+
+.form {
+    position: absolute;
+    top: 30%;
+    bottom: 60%;
+    left: 34%;
+    right: 20%;
+    margin: auto;
+    width: 140px;
+    background-color: #929ae6;
+}
+
+.submit {
+    position: absolute;
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    width: 80px;
+    height: 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    top: 40%;
+    bottom: 65%;
+    left: 53.7%;
+    right: 20%;
+}
+
+.submit5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.submit5:hover {
+    background-color: #555555;
+    color: white;
+}
+
+.button {
+    background-color: #cccf0f;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+}
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button3 {
+    background-color: #ee1616;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+}
+
+.h3 {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 43%;
+    right: 0%;
+    margin: auto;
+    color: red;
+}
+
+.h2 {
+    position: absolute;
+    top: 54%;
+    bottom: 40%;
+    left: 33%;
+    right: 0%;
+    margin: auto;
+    color: rgb(0, 0, 0);
+}
+
+.count {
+    position: absolute;
+    top: 54%;
+    bottom: 40%;
+    left: 30.5%;
+    right: 0%;
+    margin: auto;
+    color: rgb(129, 110, 0);
+}
+
+.text1 {
+    width: 15%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(78, 11, 122);
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 30%;
+    bottom: 80%;
+    left: 0%;
+    right: 15%;
+    margin: auto;
+}
+
+;
